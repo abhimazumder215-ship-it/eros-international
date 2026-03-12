@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eros International — Luxury Homes Noida | Ankkit Kumar Sangal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8CC85;
+      --black: #080808;
+      --charcoal: #141414;
+      --mid: #1E1E1E;
+      --white: #FAFAF8;
+      --blue: #1a6fa8;
+      --blue-light: #2589cc;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Raleway', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+    .cursor { width:10px; height:10px; background:var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .3s,height .3s; }
+    .cursor-ring { width:38px; height:38px; border:1px solid rgba(201,168,76,.45); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left .12s,top .12s,width .3s,height .3s; }
+    ::-webkit-scrollbar { width:3px; }
+    ::-webkit-scrollbar-track { background:var(--black); }
+    ::-webkit-scrollbar-thumb { background:var(--gold); }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:24px 60px; transition:all .4s ease; }
+    nav.scrolled { background:rgba(8,8,8,.96); backdrop-filter:blur(14px); padding:14px 60px; border-bottom:1px solid rgba(201,168,76,.12); }
+    .logo { display:flex; flex-direction:column; line-height:1; }
+    .logo-main { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:8px; }
+    .logo-sub { font-size:8px; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-top:3px; }
+    .nav-links { display:flex; gap:40px; list-style:none; }
+    .nav-links a { color:rgba(250,250,248,.65); text-decoration:none; font-size:10px; letter-spacing:3px; text-transform:uppercase; transition:color .3s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transition:transform .3s; }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-cta { background:var(--gold); border:none; color:var(--black); font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:12px 24px; cursor:pointer; transition:background .3s; }
+    .nav-cta:hover { background:var(--gold-light); }
+
+    /* HERO */
+    .hero { position:relative; height:100vh; display:flex; align-items:flex-end; padding:0 60px 80px; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background: linear-gradient(110deg, rgba(8,8,8,.82) 0%, rgba(8,8,8,.35) 55%, rgba(8,8,8,.88) 100%), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=85') center/cover no-repeat; transform:scale(1.05); animation:zoom 18s ease-out forwards; }
+    @keyframes zoom { to { transform:scale(1); } }
+    .grid-overlay { position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px); background-size:80px 80px; }
+    .hero-content { position:relative; z-index:2; max-width:680px; opacity:0; animation:fadeUp 1.1s ease .5s forwards; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
+    .hero-eyebrow { display:flex; align-items:center; gap:14px; font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); }
+    .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(46px,6.5vw,88px); font-weight:300; line-height:1.02; margin-bottom:22px; }
+    .hero-title em { font-style:italic; color:var(--gold-light); }
+    .hero-loc { font-size:12px; color:rgba(250,250,248,.5); letter-spacing:1.5px; margin-bottom:34px; }
+    .hero-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .btn-gold { background:var(--gold); color:var(--black); border:none; font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:4px; text-transform:uppercase; padding:16px 38px; cursor:pointer; transition:background .3s; position:relative; overflow:hidden; }
+    .btn-gold::before { content:''; position:absolute; inset:0; background:var(--gold-light); transform:translateX(-100%); transition:transform .35s; }
+    .btn-gold:hover::before { transform:translateX(0); }
+    .btn-gold span { position:relative; z-index:1; }
+    .btn-ghost { background:none; border:1px solid rgba(250,250,248,.25); color:rgba(250,250,248,.7); font-family:'Raleway',sans-serif; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:16px 28px; cursor:pointer; transition:all .3s; }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+    .hero-stats { position:absolute; right:60px; bottom:80px; z-index:2; display:flex; flex-direction:column; gap:24px; opacity:0; animation:fadeLeft 1s ease 1s forwards; }
+    @keyframes fadeLeft { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:translateX(0)} }
+    .hstat { text-align:right; border-right:1px solid rgba(201,168,76,.35); padding-right:18px; }
+    .hstat-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--gold-light); line-height:1; }
+    .hstat-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(250,250,248,.4); margin-top:3px; }
+
+    /* RERA */
+    .rera-strip { background:var(--charcoal); border-top:1px solid rgba(201,168,76,.14); border-bottom:1px solid rgba(201,168,76,.14); padding:13px 60px; display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
+    .rera-item { font-size:10px; color:rgba(250,250,248,.4); letter-spacing:.8px; }
+    .rera-item strong { color:var(--gold); font-weight:500; }
+    .rera-div { width:1px; height:22px; background:rgba(201,168,76,.18); }
+
+    /* MARQUEE */
+    .mq-wrap { background:var(--gold); overflow:hidden; padding:11px 0; }
+    .mq-track { display:flex; white-space:nowrap; animation:marquee 28s linear infinite; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .mq-item { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--black); font-weight:700; padding:0 32px; }
+
+    /* SECTION */
+    section { padding:100px 60px; }
+    .sec-label { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+    .sec-label::before { content:''; width:26px; height:1px; background:var(--gold); }
+    .sec-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,56px); font-weight:300; line-height:1.14; }
+    .sec-title em { font-style:italic; color:var(--gold-light); }
+
+    /* STATS BAR */
+    .stats-bar { background:var(--charcoal); padding:60px; display:grid; grid-template-columns:repeat(4,1fr); }
+    .si { text-align:center; position:relative; }
+    .si::after { content:''; position:absolute; right:0; top:15%; height:70%; width:1px; background:rgba(201,168,76,.12); }
+    .si:last-child::after { display:none; }
+    .si-num { font-family:'Cormorant Garamond',serif; font-size:50px; font-weight:300; color:var(--gold-light); line-height:1; }
+    .si-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(250,250,248,.38); margin-top:7px; }
+
+    /* PROPERTIES */
+    .properties { background:var(--black); }
+    .props-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:52px; }
+    .filter-row { display:flex; gap:3px; }
+    .ftab { background:none; border:1px solid rgba(255,255,255,.1); color:rgba(250,250,248,.45); font-family:'Raleway',sans-serif; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:9px 18px; cursor:pointer; transition:all .3s; }
+    .ftab.active, .ftab:hover { background:var(--gold); border-color:var(--gold); color:var(--black); }
+    .props-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+    .pc { position:relative; overflow:hidden; cursor:pointer; background:var(--mid); }
+    .pc.big { grid-column:span 2; }
+    .pc-img { width:100%; height:280px; object-fit:cover; display:block; transition:transform .7s ease; }
+    .pc.big .pc-img { height:400px; }
+    .pc:hover .pc-img { transform:scale(1.06); }
+    .pc-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 55%); }
+    .pc-info { position:absolute; bottom:0; left:0; right:0; padding:24px; }
+    .pc-tag { display:inline-block; font-size:8px; letter-spacing:2.5px; text-transform:uppercase; padding:4px 10px; margin-bottom:8px; font-weight:600; }
+    .pc-tag.launch { background:#27AE60; color:#fff; }
+    .pc-tag.ready { background:var(--gold); color:var(--black); }
+    .pc-tag.sold { background:#555; color:#ccc; }
+    .pc-tag.upcoming { background:var(--blue); color:#fff; }
+    .pc-name { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:400; margin-bottom:3px; }
+    .pc-loc { font-size:10px; color:rgba(250,250,248,.48); letter-spacing:.8px; margin-bottom:10px; }
+    .pc-price { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--gold-light); }
+    .pc-meta { display:flex; gap:16px; margin-top:9px; opacity:0; transform:translateY(8px); transition:all .3s; }
+    .pc:hover .pc-meta { opacity:1; transform:translateY(0); }
+    .pc-meta span { font-size:10px; color:rgba(250,250,248,.48); }
+    .pc-rera { font-size:9px; color:rgba(201,168,76,.55); margin-top:5px; }
+
+    /* ABOUT */
+    .about { background:var(--mid); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .ab-visual { position:relative; }
+    .ab-img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+    .ab-accent { position:absolute; bottom:-28px; right:-28px; width:46%; aspect-ratio:1; object-fit:cover; border:5px solid var(--mid); }
+    .ab-bar { position:absolute; top:24px; left:-18px; width:3px; height:52%; background:linear-gradient(to bottom,var(--gold),transparent); }
+    .ab-badge { position:absolute; top:24px; right:24px; background:rgba(8,8,8,.88); border:1px solid rgba(201,168,76,.28); padding:16px 20px; text-align:center; backdrop-filter:blur(8px); }
+    .ab-badge-num { font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--gold); line-height:1; }
+    .ab-badge-txt { font-size:8px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,250,248,.45); margin-top:4px; }
+    .ab-text .sec-title { margin-bottom:22px; }
+    .ab-body { font-size:13px; line-height:1.95; color:rgba(250,250,248,.52); margin-bottom:32px; }
+    .ab-list { list-style:none; margin-bottom:40px; }
+    .ab-list li { display:flex; align-items:flex-start; gap:10px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.05); font-size:12px; color:rgba(250,250,248,.62); }
+    .ab-list li::before { content:'✦'; color:var(--gold); font-size:9px; margin-top:2px; flex-shrink:0; }
+
+    /* AMENITIES */
+    .amenities { background:var(--black); text-align:center; }
+    .amenities .sec-label { justify-content:center; }
+    .amenities .sec-label::before { display:none; }
+    .amenities .sec-title { margin-bottom:56px; }
+    .am-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; }
+    .am-item { background:var(--charcoal); padding:32px 18px; transition:background .3s,transform .3s; }
+    .am-item:hover { background:var(--mid); transform:translateY(-4px); }
+    .am-icon { font-size:30px; margin-bottom:12px; }
+    .am-name { font-size:10px; letter-spacing:1.5px; color:rgba(250,250,248,.55); text-transform:uppercase; }
+
+    /* OWNER CARD SECTION */
+    .owner-section { background:linear-gradient(135deg, #0a0f1a 0%, #0d1520 50%, #0a0f1a 100%); padding:100px 60px; position:relative; overflow:hidden; }
+    .owner-section::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(26,111,168,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,111,168,.06) 1px,transparent 1px); background-size:60px 60px; }
+    .owner-section::after { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle, rgba(26,111,168,.08) 0%, transparent 70%); pointer-events:none; }
+    .owner-inner { position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .owner-card-wrap { display:flex; justify-content:center; }
+    .owner-card {
+      background:linear-gradient(145deg, #ffffff 0%, #f0f6fc 100%);
+      border-radius:16px;
+      padding:40px 36px;
+      width:320px;
+      box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(26,111,168,.3);
+      position:relative;
+      overflow:hidden;
+      animation:cardFloat 4s ease-in-out infinite;
+      color:#1a1a1a;
+    }
+    @keyframes cardFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .owner-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--blue), var(--blue-light)); }
+    .owner-card::after { content:''; position:absolute; bottom:0; right:0; width:120px; height:120px; background:radial-gradient(circle, rgba(26,111,168,.06) 0%, transparent 70%); }
+    .card-top { display:flex; flex-direction:column; align-items:center; margin-bottom:24px; }
+    .card-avatar { width:90px; height:90px; border-radius:50%; border:3px solid var(--blue-light); object-fit:cover; margin-bottom:14px; box-shadow:0 4px 20px rgba(26,111,168,.3); }
+    .card-name { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:#0a1628; text-align:center; line-height:1.2; margin-bottom:6px; letter-spacing:1px; }
+    .card-role-badge { background:linear-gradient(90deg, var(--blue), var(--blue-light)); color:#fff; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:20px; font-weight:600; }
+    .card-logo-area { display:flex; flex-direction:column; align-items:center; padding:16px 0; border-top:1px solid rgba(26,111,168,.15); border-bottom:1px solid rgba(26,111,168,.15); margin-bottom:20px; }
+    .card-logo-text { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; letter-spacing:5px; color:#0a1628; }
+    .card-logo-sub { font-size:8px; letter-spacing:4px; color:var(--blue); text-transform:uppercase; margin-top:2px; }
+    .card-logo-icon { font-size:28px; margin-bottom:4px; }
+    .card-contacts { display:flex; flex-direction:column; gap:10px; }
+    .card-contact-item { display:flex; align-items:center; gap:10px; }
+    .card-contact-icon { width:28px; height:28px; background:rgba(26,111,168,.1); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+    .card-contact-text { font-size:11px; color:#333; letter-spacing:.3px; }
+    .card-contact-text a { color:var(--blue); text-decoration:none; }
+    .card-qr-hint { text-align:center; margin-top:18px; padding-top:16px; border-top:1px solid rgba(26,111,168,.12); font-size:9px; color:#999; letter-spacing:1px; text-transform:uppercase; }
+
+    .owner-text .sec-title { margin-bottom:22px; }
+    .owner-text p { font-size:13px; line-height:1.95; color:rgba(250,250,248,.52); margin-bottom:28px; }
+    .owner-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+    .btn-call { background:var(--blue); border:none; color:#fff; font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:15px 28px; cursor:pointer; transition:background .3s; display:flex; align-items:center; gap:8px; }
+    .btn-call:hover { background:var(--blue-light); }
+    .btn-wa { background:#25D366; border:none; color:#fff; font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:15px 28px; cursor:pointer; transition:background .3s; display:flex; align-items:center; gap:8px; }
+    .btn-wa:hover { background:#1ebe5a; }
+    .owner-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px; }
+    .of { background:rgba(26,111,168,.08); border:1px solid rgba(26,111,168,.15); padding:20px 16px; text-align:center; }
+    .of-num { font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--blue-light); line-height:1; }
+    .of-label { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,250,248,.4); margin-top:4px; }
+
+    /* LOCATION */
+    .location { background:var(--charcoal); display:grid; grid-template-columns:1fr 1fr; }
+    .loc-map iframe { width:100%; height:100%; min-height:480px; border:none; filter:grayscale(.5) contrast(1.1); display:block; }
+    .loc-content { padding:80px 60px; }
+    .loc-dists { display:grid; grid-template-columns:1fr 1fr; margin-top:36px; }
+    .ld { padding:16px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+    .ld:nth-child(odd) { padding-right:28px; border-right:1px solid rgba(255,255,255,.05); }
+    .ld:nth-child(even) { padding-left:28px; }
+    .ld-place { font-size:10px; color:rgba(250,250,248,.42); letter-spacing:1px; margin-bottom:3px; }
+    .ld-time { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold-light); }
+    .ld-time small { font-family:'Raleway',sans-serif; font-size:10px; color:rgba(250,250,248,.32); }
+
+    /* CTA */
+    .cta-s { position:relative; padding:100px 60px; text-align:center; background:linear-gradient(135deg,rgba(8,8,8,.94) 0%,rgba(8,8,8,.7) 100%), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80') center/cover; }
+    .cta-s .sec-label { justify-content:center; }
+    .cta-s .sec-label::before { display:none; }
+    .cta-s .sec-title { max-width:580px; margin:12px auto 20px; }
+    .cta-s > p { font-size:13px; color:rgba(250,250,248,.48); margin-bottom:40px; }
+    .cta-row { display:flex; gap:10px; max-width:560px; margin:0 auto; }
+    .cta-in { flex:1; background:rgba(255,255,255,.07); border:1px solid rgba(201,168,76,.25); color:var(--white); font-family:'Raleway',sans-serif; font-size:12px; padding:15px 18px; outline:none; transition:border-color .3s; }
+    .cta-in::placeholder { color:rgba(250,250,248,.28); }
+    .cta-in:focus { border-color:var(--gold); }
+    .cta-btn { background:var(--gold); border:none; color:var(--black); font-family:'Raleway',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:15px 28px; cursor:pointer; white-space:nowrap; transition:background .3s; }
+    .cta-btn:hover { background:var(--gold-light); }
+    .cta-note { font-size:10px; color:rgba(250,250,248,.28); margin-top:18px; letter-spacing:.8px; }
+
+    /* FOOTER */
+    footer { background:var(--charcoal); padding:64px 60px 32px; border-top:1px solid rgba(201,168,76,.1); }
+    .ft { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .fb-brand p { font-size:12px; line-height:1.9; color:rgba(250,250,248,.38); margin-top:12px; max-width:240px; }
+    .socials { display:flex; gap:8px; margin-top:20px; }
+    .sb { width:32px; height:32px; border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; font-size:11px; color:rgba(250,250,248,.38); text-decoration:none; transition:all .3s; }
+    .sb:hover { border-color:var(--gold); color:var(--gold); }
+    .fc h4 { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .fc ul { list-style:none; }
+    .fc ul li { margin-bottom:9px; }
+    .fc ul li a { font-size:11px; color:rgba(250,250,248,.42); text-decoration:none; transition:color .3s; }
+    .fc ul li a:hover { color:var(--gold); }
+    .fb-bottom { border-top:1px solid rgba(255,255,255,.05); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    .fb-copy { font-size:10px; color:rgba(250,250,248,.2); letter-spacing:.5px; }
+    .fb-legal { display:flex; gap:24px; }
+    .fb-legal a { font-size:10px; color:rgba(250,250,248,.2); text-decoration:none; transition:color .3s; }
+    .fb-legal a:hover { color:var(--gold); }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .8s ease,transform .8s ease; }
+    .reveal-l { opacity:0; transform:translateX(-32px); transition:opacity .8s ease,transform .8s ease; }
+    .reveal.vis, .reveal-l.vis { opacity:1; transform:none; }
+
+    /* Floating CTA */
+    .float-cta { position:fixed; bottom:28px; right:28px; z-index:500; display:flex; flex-direction:column; gap:10px; }
+    .fcta-btn { width:52px; height:52px; border-radius:50%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:0 4px 20px rgba(0,0,0,.5); transition:transform .3s; }
+    .fcta-btn:hover { transform:scale(1.1); }
+    .fcta-call { background:var(--blue); }
+    .fcta-wa { background:#25D366; }
+
+    @media(max-width:900px){
+      nav,.rera-strip,.stats-bar,.owner-section,.cta-s { padding-left:24px; padding-right:24px; }
+      nav { padding-top:18px; padding-bottom:18px; }
+      nav.scrolled { padding-top:12px; padding-bottom:12px; }
+      .nav-links { display:none; }
+      section { padding:70px 24px; }
+      .hero { padding:0 24px 60px; }
+      .hero-stats { display:none; }
+      .stats-bar { grid-template-columns:1fr 1fr; gap:28px; padding:48px 24px; }
+      .props-grid { grid-template-columns:1fr; }
+      .pc.big { grid-column:auto; }
+      .about { grid-template-columns:1fr; gap:36px; padding:70px 24px; }
+      .ab-accent { display:none; }
+      .am-grid { grid-template-columns:repeat(3,1fr); }
+      .owner-inner { grid-template-columns:1fr; gap:48px; }
+      .owner-card { width:100%; max-width:320px; }
+      .location { grid-template-columns:1fr; }
+      .loc-content { padding:60px 24px; }
+      .ft { grid-template-columns:1fr 1fr; gap:32px; padding:0 24px; }
+      .fb-bottom { flex-direction:column; text-align:center; padding:0 24px 24px; }
+      .cta-row { flex-direction:column; }
+      .props-header { flex-direction:column; align-items:flex-start; gap:16px; }
+      footer { padding-left:0; padding-right:0; padding-bottom:100px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Floating CTAs -->
+<div class="float-cta">
+  <a href="tel:9811671471"><button class="fcta-btn fcta-call" title="Call Now">📞</button></a>
+  <a href="https://wa.me/919811671471" target="_blank"><button class="fcta-btn fcta-wa" title="WhatsApp">💬</button></a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">
+    <span class="logo-main">EROS</span>
+    <span class="logo-sub">International · Noida</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#agent">Our Expert</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Site Visit</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Now Available — Greater Noida West</div>
+    <h1 class="hero-title">Your Dream<br><em>Home</em> Awaits<br>in Noida</h1>
+    <div class="hero-loc">📍 Sector 2, Greater Noida West · Starting ₹63 Lacs*</div>
+    <div class="hero-actions">
+      <button class="btn-gold" onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})"><span>View Properties</span></button>
+      <button class="btn-ghost" onclick="document.getElementById('agent').scrollIntoView({behavior:'smooth'})">Talk to Expert</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">3,400+</div><div class="hstat-label">Homes Delivered</div></div>
+    <div class="hstat"><div class="hstat-num">25 Ac</div><div class="hstat-label">Land Area</div></div>
+    <div class="hstat"><div class="hstat-num">80+</div><div class="hstat-label">Years Legacy</div></div>
+  </div>
+</section>
+
+<!-- RERA -->
+<div class="rera-strip">
+  <div class="rera-item">🏛 RERA: <strong>UPRERAPRJ512436/07/2024</strong></div>
+  <div class="rera-div"></div>
+  <div class="rera-item">Phase 1: <strong>UPRERAPRJ972907</strong></div>
+  <div class="rera-div"></div>
+  <div class="rera-item">Phase 2: <strong>UPRERAPRJ301564</strong></div>
+  <div class="rera-div"></div>
+  <div class="rera-item">Verify: <strong>www.up-rera.in</strong></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Eros Sampoornam Phase 3 — Now Launching ✦</span>
+    <span class="mq-item">2 &amp; 3 BHK Apartments ✦</span>
+    <span class="mq-item">Starting ₹63 Lacs* ✦</span>
+    <span class="mq-item">E Block, Sector-63, Noida ✦</span>
+    <span class="mq-item">Call: 9811671471 ✦</span>
+    <span class="mq-item">Ready to Move Units Available ✦</span>
+    <span class="mq-item">Eros Sampoornam Phase 3 — Now Launching ✦</span>
+    <span class="mq-item">2 &amp; 3 BHK Apartments ✦</span>
+    <span class="mq-item">Starting ₹63 Lacs* ✦</span>
+    <span class="mq-item">E Block, Sector-63, Noida ✦</span>
+    <span class="mq-item">Call: 9811671471 ✦</span>
+    <span class="mq-item">Ready to Move Units Available ✦</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="si reveal"><div class="si-num">3,400+</div><div class="si-label">Homes in Sampoornam</div></div>
+  <div class="si reveal"><div class="si-num">25 Ac</div><div class="si-label">Project Land Area</div></div>
+  <div class="si reveal"><div class="si-num">40</div><div class="si-label">Residential Towers</div></div>
+  <div class="si reveal"><div class="si-num">45+</div><div class="si-label">World-class Amenities</div></div>
+</div>
+
+<!-- PROPERTIES -->
+<section class="properties" id="properties">
+  <div class="props-header">
+    <div>
+      <div class="sec-label">Our Noida Portfolio</div>
+      <h2 class="sec-title">Eros <em>Sampoornam</em><br>— Choose Your Phase</h2>
+    </div>
+    <div class="filter-row">
+      <button class="ftab active">All</button>
+      <button class="ftab">2 BHK</button>
+      <button class="ftab">3 BHK</button>
+      <button class="ftab">Ready</button>
+    </div>
+  </div>
+  <div class="props-grid">
+
+    <!-- Phase 3 BIG -->
+    <div class="pc big reveal">
+      <img class="pc-img" src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=1000&q=85" alt="Sampoornam Phase 3"/>
+      <div class="pc-overlay"></div>
+      <div class="pc-info">
+        <span class="pc-tag launch">🔥 Now Launching</span>
+        <div class="pc-name">Eros Sampoornam — Phase 3</div>
+        <div class="pc-loc">📍 Sector 2, Greater Noida West</div>
+        <div class="pc-price">Starting ₹63 Lacs*</div>
+        <div class="pc-meta">
+          <span>2 &amp; 3 BHK</span>
+          <span>835–1765 sq ft</span>
+          <span>19 Floors</span>
+          <span>Hi-Rise Towers</span>
+        </div>
+        <div class="pc-rera">RERA: UPRERAPRJ512436/07/2024</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="pc reveal">
+      <img class="pc-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&q=80" alt="Sampoornam Phase 2"/>
+      <div class="pc-overlay"></div>
+      <div class="pc-info">
+        <span class="pc-tag ready">✅ Ready to Move</span>
+        <div class="pc-name">Eros Sampoornam — Phase 2</div>
+        <div class="pc-loc">📍 Sector 2, Greater Noida West</div>
+        <div class="pc-price">₹55–80 Lacs*</div>
+        <div class="pc-meta">
+          <span>2 &amp; 3 BHK</span>
+          <span>OC Received</span>
+        </div>
+        <div class="pc-rera">RERA: UPRERAPRJ301564</div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="pc reveal">
+      <img class="pc-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Sampoornam Phase 1"/>
+      <div class="pc-overlay"></div>
+      <div class="pc-info">
+        <span class="pc-tag sold">🏠 Possession Given</span>
+        <div class="pc-name">Eros Sampoornam — Phase 1</div>
+        <div class="pc-loc">📍 Sector 2, Greater Noida West</div>
+        <div class="pc-price">Secondary Market</div>
+        <div class="pc-meta">
+          <span>2 &amp; 3 BHK</span>
+          <span>Resale Available</span>
+        </div>
+        <div class="pc-rera">RERA: UPRERAPRJ972907</div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="pc reveal">
+      <img class="pc-img" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=80" alt="Sampoornam Phase 4"/>
+      <div class="pc-overlay"></div>
+      <div class="pc-info">
+        <span class="pc-tag upcoming">🚀 Upcoming</span>
+        <div class="pc-name">Eros Sampoornam — Phase 4</div>
+        <div class="pc-loc">📍 Sector 2, Greater Noida West</div>
+        <div class="pc-price">Pre-Launch Price</div>
+        <div class="pc-meta">
+          <span>2 &amp; 3 BHK</span>
+          <span>₹400 Cr Project</span>
+        </div>
+        <div class="pc-rera">Enquire for RERA</div>
+      </div>
+    </div>
+
+    <!-- 3BHK Luxury -->
+    <div class="pc reveal">
+      <img class="pc-img" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80" alt="3BHK Luxury Unit"/>
+      <div class="pc-overlay"></div>
+      <div class="pc-info">
+        <span class="pc-tag ready">3 BHK Premium</span>
+        <div class="pc-name">3 BHK — Premium Floor</div>
+        <div class="pc-loc">📍 Phase 3 High-Rise Tower</div>
+        <div class="pc-price">₹92–1.1 Cr*</div>
+        <div class="pc-meta">
+          <span>1765 sq ft</span>
+          <span>3 Bed · 3 Bath</span>
+          <span>Corner Unit</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="ab-visual reveal-l">
+    <div class="ab-bar"></div>
+    <div class="ab-badge">
+      <div class="ab-badge-num">80+</div>
+      <div class="ab-badge-txt">Yrs of Trust</div>
+    </div>
+    <img class="ab-img" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80" alt="Interior"/>
+    <img class="ab-accent" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80" alt="Exterior"/>
+  </div>
+  <div class="ab-text reveal">
+    <div class="sec-label">Why Eros Group</div>
+    <h2 class="sec-title">A Legacy of<br><em>Happy Homes</em></h2>
+    <p class="ab-body">With over 80 years of excellence, Eros Group has built a reputation as one of Delhi NCR's most trusted developers — delivering millions of sq ft across Charmwood Village, Rosewood City, and Lakewood City. Eros Sampoornam in Noida Extension is the latest chapter in that story.</p>
+    <ul class="ab-list">
+      <li>4-side open township — 70% open green space across 25 acres</li>
+      <li>RERA-registered project with full legal transparency</li>
+      <li>Situated on a 130m wide, 8-lane road for prime connectivity</li>
+      <li>Upcoming metro station, FNG Corridor &amp; Noida Expressway proximity</li>
+      <li>Timely possession track record across all delivered phases</li>
+    </ul>
+    <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><span>Schedule Free Site Visit</span></button>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="sec-label">World-Class Living</div>
+  <h2 class="sec-title">45+ <em>Amenities</em> for Complete Life</h2>
+  <div class="am-grid">
+    <div class="am-item reveal"><div class="am-icon">🏊</div><div class="am-name">Swimming Pool</div></div>
+    <div class="am-item reveal"><div class="am-icon">🏋️</div><div class="am-name">Modern Gym</div></div>
+    <div class="am-item reveal"><div class="am-icon">🧘</div><div class="am-name">Yoga &amp; Meditation</div></div>
+    <div class="am-item reveal"><div class="am-icon">🎾</div><div class="am-name">Tennis Court</div></div>
+    <div class="am-item reveal"><div class="am-icon">🏀</div><div class="am-name">Basketball Court</div></div>
+    <div class="am-item reveal"><div class="am-icon">🌳</div><div class="am-name">Landscaped Gardens</div></div>
+    <div class="am-item reveal"><div class="am-icon">🎱</div><div class="am-name">Billiards Room</div></div>
+    <div class="am-item reveal"><div class="am-icon">🛹</div><div class="am-name">Skating Area</div></div>
+    <div class="am-item reveal"><div class="am-icon">⛳</div><div class="am-name">Putting Green</div></div>
+    <div class="am-item reveal"><div class="am-icon">🚗</div><div class="am-name">Covered Parking</div></div>
+    <div class="am-item reveal"><div class="am-icon">🏸</div><div class="am-name">Badminton Court</div></div>
+    <div class="am-item reveal"><div class="am-icon">🛡️</div><div class="am-name">24/7 Security</div></div>
+    <div class="am-item reveal"><div class="am-icon">🏥</div><div class="am-name">Medical Facility</div></div>
+    <div class="am-item reveal"><div class="am-icon">🛒</div><div class="am-name">Commercial Shops</div></div>
+    <div class="am-item reveal"><div class="am-icon">🌿</div><div class="am-name">100m Green Belt</div></div>
+  </div>
+</section>
+
+<!-- OWNER / AGENT CARD SECTION -->
+<section class="owner-section" id="agent">
+  <div class="owner-inner">
+
+    <!-- Card -->
+    <div class="owner-card-wrap reveal-l">
+      <div class="owner-card">
+        <div class="card-top">
+          <!-- Using a placeholder portrait since we can't embed uploaded images in static HTML -->
+          <div style="width:90px;height:90px;border-radius:50%;border:3px solid #2589cc;background:linear-gradient(135deg,#1a6fa8,#2589cc);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:36px;box-shadow:0 4px 20px rgba(26,111,168,.3);">👨‍💼</div>
+          <div class="card-name">ANKKIT<br>KUMAR SANGAL</div>
+          <div class="card-role-badge">Owner | Real Estate Expert</div>
+        </div>
+        <div class="card-logo-area">
+          <div class="card-logo-icon">🏠</div>
+          <div class="card-logo-text">EROS</div>
+          <div class="card-logo-sub">International</div>
+        </div>
+        <div class="card-contacts">
+          <div class="card-contact-item">
+            <div class="card-contact-icon">📞</div>
+            <div class="card-contact-text"><a href="tel:9811671471">9811671471</a></div>
+          </div>
+          <div class="card-contact-item">
+            <div class="card-contact-icon">🌐</div>
+            <div class="card-contact-text"><a href="https://www.instagram.com/erosrealty" target="_blank">instagram.com/erosrealty</a></div>
+          </div>
+          <div class="card-contact-item">
+            <div class="card-contact-icon">✉️</div>
+            <div class="card-contact-text"><a href="mailto:aksangal99@gmail.com">aksangal99@gmail.com</a></div>
+          </div>
+          <div class="card-contact-item">
+            <div class="card-contact-icon">📍</div>
+            <div class="card-contact-text">E Block, Sector-63, Noida</div>
+          </div>
+        </div>
+        <div class="card-qr-hint">Scan or tap to connect instantly</div>
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="owner-text reveal">
+      <div class="sec-label">Your Trusted Expert</div>
+      <h2 class="sec-title">Meet <em>Ankkit</em><br>Kumar Sangal</h2>
+      <p>As the Owner and Real Estate Expert at Eros International, Ankkit brings unparalleled knowledge of the Noida property market. With deep expertise in Eros Sampoornam across all phases, he ensures every client finds the right home at the right price.</p>
+      <p>From first inquiry to final possession, Ankkit provides end-to-end guidance — site visits, pricing negotiation, home loan assistance, and legal documentation support.</p>
+      <div class="owner-ctas">
+        <a href="tel:9811671471" style="text-decoration:none">
+          <button class="btn-call">📞 Call Now — 9811671471</button>
+        </a>
+        <a href="https://wa.me/919811671471?text=Hi%20Ankkit%2C%20I%20am%20interested%20in%20Eros%20Sampoornam%20properties" target="_blank" style="text-decoration:none">
+          <button class="btn-wa">💬 WhatsApp</button>
+        </a>
+      </div>
+      <div class="owner-facts">
+        <div class="of"><div class="of-num">500+</div><div class="of-label">Homes Sold</div></div>
+        <div class="of"><div class="of-num">10+</div><div class="of-label">Years Exp.</div></div>
+        <div class="of"><div class="of-num">4.9★</div><div class="of-label">Client Rating</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCATION -->
+<div class="location" id="location">
+  <div class="loc-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.9!2d77.4377!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5adcc8ecf59%3A0x56a5a46e8dbe4748!2sSector%202%2C%20Greater%20Noida%20West!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="loc-content">
+    <div class="sec-label">Prime Location</div>
+    <h2 class="sec-title">Connected<br>to <em>Everything</em></h2>
+    <p style="font-size:13px;color:rgba(250,250,248,.48);line-height:1.9;margin-top:14px;">GH-01, Sector 2, Greater Noida West — on a 130m wide 8-lane road with excellent NCR connectivity.</p>
+    <div class="loc-dists">
+      <div class="ld"><div class="ld-place">Sec 32 Metro Station</div><div class="ld-time">5 <small>min</small></div></div>
+      <div class="ld"><div class="ld-place">Gaur Chowk</div><div class="ld-time">5 <small>min</small></div></div>
+      <div class="ld"><div class="ld-place">Sector 50 Noida</div><div class="ld-time">25 <small>min</small></div></div>
+      <div class="ld"><div class="ld-place">New Delhi Railway</div><div class="ld-time">34 <small>km</small></div></div>
+      <div class="ld"><div class="ld-place">IGI Airport</div><div class="ld-time">45 <small>km</small></div></div>
+      <div class="ld"><div class="ld-place">Gaur City Mall</div><div class="ld-time">7 <small>km</small></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-s" id="contact">
+  <div class="sec-label">Book Your Visit</div>
+  <h2 class="sec-title">Get Your <em>Dream Home</em> Today</h2>
+  <p>Fill your details — Ankkit Kumar Sangal will call you within 1 hour.</p>
+  <div class="cta-row">
+    <input class="cta-in" type="text" placeholder="Your Full Name"/>
+    <input class="cta-in" type="tel" placeholder="Mobile Number"/>
+    <button class="cta-btn">Get Callback</button>
+  </div>
+  <div class="cta-note">📞 9811671471 &nbsp;|&nbsp; ✉️ aksangal99@gmail.com &nbsp;|&nbsp; 📍 E Block, Sector-63, Noida</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fb-brand">
+      <div class="logo">
+        <span class="logo-main">EROS</span>
+        <span class="logo-sub">International · Noida</span>
+      </div>
+      <p>Creating exquisite homes in Delhi NCR for over 80 years. Contact Ankkit Kumar Sangal — your trusted Noida real estate expert.</p>
+      <div class="socials">
+        <a class="sb" href="https://www.instagram.com/erosrealty" target="_blank">ig</a>
+        <a class="sb" href="tel:9811671471">📞</a>
+        <a class="sb" href="https://wa.me/919811671471" target="_blank">wa</a>
+        <a class="sb" href="mailto:aksangal99@gmail.com">✉</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>Projects</h4>
+      <ul>
+        <li><a href="#properties">Sampoornam Phase 1</a></li>
+        <li><a href="#properties">Sampoornam Phase 2</a></li>
+        <li><a href="#properties">Sampoornam Phase 3</a></li>
+        <li><a href="#properties">Sampoornam Phase 4</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Eros Group</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#location">Location Map</a></li>
+        <li><a href="#agent">Meet the Expert</a></li>
+        <li><a href="#contact">Book Site Visit</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:9811671471">📞 9811671471</a></li>
+        <li><a href="mailto:aksangal99@gmail.com">aksangal99@gmail.com</a></li>
+        <li><a href="#">E Block, Sector-63</a></li>
+        <li><a href="#">Noida, UP — 201301</a></li>
+        <li><a href="#">instagram.com/erosrealty</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bottom">
+    <span class="fb-copy">© 2024 Eros International | Ankkit Kumar Sangal | RERA: UPRERAPRJ512436/07/2024 | *Prices indicative, subject to change.</span>
+    <div class="fb-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">RERA Info</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const c = document.getElementById('cursor'), r = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    c.style.left = e.clientX+'px'; c.style.top = e.clientY+'px';
+    r.style.left = e.clientX+'px'; r.style.top = e.clientY+'px';
+  });
+  document.querySelectorAll('a,button,.pc,.am-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { c.style.width='16px'; c.style.height='16px'; r.style.width='54px'; r.style.height='54px'; });
+    el.addEventListener('mouseleave', () => { c.style.width='10px'; c.style.height='10px'; r.style.width='38px'; r.style.height='38px'; });
+  });
+
+  // Navbar
+  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60); });
+
+  // Reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal,.reveal-l').forEach(el => obs.observe(el));
+
+  // Filter tabs
+  document.querySelectorAll('.ftab').forEach(t => {
+    t.addEventListener('click', () => { document.querySelectorAll('.ftab').forEach(x => x.classList.remove('active')); t.classList.add('active'); });
+  });
+</script>
+</body>
+</html>
